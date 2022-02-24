@@ -1,8 +1,9 @@
 const express = require('express')
+const { route } = require('express/lib/application')
 const router = express.Router()
 const User = require('../model/user')
-const mongoose =require("mongoose")
-const bcrypt = require("bcrypt")
+// const mongoose =require("mongoose")
+// const bcrypt = require("bcrypt")
 
 // router.post("/signup",(req,res,next)=>{
 //     User.find({ email: req.body.email })
@@ -96,28 +97,53 @@ const bcrypt = require("bcrypt")
   
 
 
-router.post("/signup",async(req,res)=>{
-    const user= new User(req.body)
-    try{
-      await user.save()
+// router.post("/",async(req,res)=>{
+//     const user= new User({
+//       email:req.body.email,
+//       password: req.body.password
+//     })
+//     // console.log(req.body)
+//     try{
+//       const a1= await user.save()
+//       res.json(a1)
+//       // res.status(201).send(user)
+//     }catch(e){
+//       res.send(e)
+//     }
+// })
 
-      res.status(201).send(user)
-    }catch(e){
-      res.status(400).send(e)
-    }
-})
+// router.get("/",async(req,res)=>{
+//   try{
+//     const data = await User.find({})
+//     res.send(data)
+//   }catch(e){
+//     res.send(e)
+//   }
+// })
 
 
-router.post("/login",async (req,res)=>{
-  try{
+// router.patch("/:id",async(req,res)=>{
+//   try{
+//     const data = await User.findById(req.params.id)
+//     const a1= await data.save()
+//     res.json(a1)
+//   }catch(e){
+//     res.send(e)
+//   }
+// })
 
-    const user = await User.findByCredentials(req.body.email,req.body.password)
-    const token = await user.generateAuthToken()
-    res.send(user,token)
-  }catch(e){
-    res.status(400).send()
-  }
 
-})
+
+// router.post("/",async (req,res)=>{
+//   try{
+
+//     const user = await User.findByCredentials(req.body.email,req.body.password)
+//     const token = await user.generateAuthToken()
+//     res.json(user,token)
+//   }catch(e){
+//     res.status(400).send()
+//   }
+
+// })
 
 module.exports = router;
