@@ -7,6 +7,7 @@ const authRoute = require("./router/auth")
 const jwt=require("jsonwebtoken")
 // const bodyParser = require('body-parser');
 const dbURI="mongodb+srv://arti:arti1234@cluster0.yj4az.mongodb.net/loginapi?retryWrites=true&w=majority"
+
 // const  dbURI = "mongodb+srv://artiborad1:Y+W!2Gd/UFic?4R@cluster0.cgo68.mongodb.net/loginapi?retryWrites=true&w=majority"
 app.use(express.json())
 app.use("/auth",authRoute)

@@ -12,13 +12,20 @@ const userSchema = mongoose.Schema({
     password: {
         type: String,
         required: true
-    }
+    },
+    tokens:[{
+        token:{
+            type:String,
+            require:true
+        }
+
+    }]
 });
 
 userSchema.methods.generateAuthToken = async function(){
     const user =this
-    const token = jwt.sign({_id:user._id.toString()},"thisisnewtoken")
-    // user.tokens =user.tokens.concat({token})
+    const token = jwt.sign({_id: user._id.toString()},"thisisnewtoken")
+    user.tokens =user.tokens.concat({token})
     await user.save()
     return token;
 }
